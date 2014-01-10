@@ -15,6 +15,12 @@ angular.module("techlinks", ["techlinks.services"]).
             .when('/stories/:storyId', {templateUrl: 'views/stories/detail.html', controller: StoryDetailController});
     });
 
+angular.run(function($http){
+    $http.defaults.headers.common.Accept="application/json"
+    $http.defaults.headers.common['Content-Type'] = "application/json"
+
+})
+
 function StoryListController($scope, Story) {
     $scope.stories = Story.query();
     
